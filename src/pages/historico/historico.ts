@@ -3,11 +3,9 @@ import { NavController, AlertController, ToastController } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginPage } from '../login/login';
 import { MostraHistoricoPage } from '../mostra-historico/mostra-historico';
-//import * as io from 'socket.io-client';
-import { BackgroundMode } from '@ionic-native/background-mode';
+import { ServicoProvider } from '../../providers/servico/servico';
 import {Camera, CameraOptions } from '@ionic-native/camera'
 import { ConstantesComponent } from '../../components/constantes/constantes';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'page-historico',
@@ -47,9 +45,8 @@ export class HistoricoPage {
 
   foto : any = 'assets/imgs/logobrandao.png';
 
-  constructor(public navCtrl: NavController, public http: HttpClient, private alertCtrl: AlertController, private backgroundMode: BackgroundMode, private camera : Camera, private toastCtrl : ToastController) {
+  constructor(public navCtrl: NavController, public http: HttpClient, private alertCtrl: AlertController, private camera : Camera, private toastCtrl : ToastController, private servicoProvider: ServicoProvider) {
     this.apiUrl = this.Constantes.url;
-    this.backgroundMode.enable();
     this.headers = new HttpHeaders();
     this.token = localStorage.getItem("tokenAppPM");
     this.expires = localStorage.getItem("expiresAppPM");
@@ -58,18 +55,31 @@ export class HistoricoPage {
       this.navCtrl.push(LoginPage);
     }
     this.idUsu = localStorage.getItem('idUsuaAppPM');
+    this.buscaFotoLocal();
     this.buscaAluno();
-    this.buscaEvolucao();
     this.buscaTreinos();
+    this.buscaEvolucao();
+    this.buscaAlunoLocal();
+    this.buscaEvolucaoLocal();
+    this.buscaTreinoLocal();
   }
 
   buscaAluno() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'alunos/'+this.idUsu, {headers: this.headers}).subscribe(res => {
         this.dadosAluno = res;
+        this.servicoProvider.remove("aluno");
+        this.servicoProvider.save("aluno", this.dadosAluno);
       }, error => {
         console.log("error");
       });
+    });
+  }
+
+  buscaAlunoLocal() {
+    this.servicoProvider.getAluno().then(aluno => {
+      this.dadosAluno = aluno;
+      console.log();
     });
   }
 
@@ -77,8 +87,9 @@ export class HistoricoPage {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'treinos/'+this.idUsu, {headers: this.headers}).subscribe(res => {
         this.listaTreinos = res;
-        if(this.listaTreinos.length > 0){
-          this.data = res[0].data;
+        if(this.listaTreinos.treinos.length > 0){
+          this.servicoProvider.remove("treino");
+          this.servicoProvider.save("treino", this.listaTreinos);
           this.existe = true;
         }else{
           this.existe = false;
@@ -89,11 +100,19 @@ export class HistoricoPage {
     });
   }
 
+  buscaTreinoLocal() {
+    this.servicoProvider.getTreino().then(treino => {
+      this.listaTreinos = treino;
+    });
+  }
+
   buscaEvolucao() {
     return new Promise(resolve => {
       this.http.get(this.apiUrl+'evolucaos/mobile/evolucao/'+this.idUsu, {headers: this.headers}).subscribe(res => {
         this.evolucaoLista = res;
         if(this.evolucaoLista.length > 0) {
+          this.servicoProvider.remove("evolucao");
+          this.servicoProvider.save("evolucao", this.evolucaoLista);
           this.evolucaoExiste = true;
         }else{
           this.evolucaoExiste = false;
@@ -101,6 +120,15 @@ export class HistoricoPage {
       }, error => {
         console.log("error");
       });
+    });
+  }
+
+  buscaEvolucaoLocal() {
+    this.servicoProvider.getEvolucao().then(evolucao => {
+      this.evolucaoLista = evolucao;
+      if(this.evolucaoLista.length > 0) {
+        this.evolucaoExiste = true;
+      }
     });
   }
 
@@ -139,6 +167,8 @@ export class HistoricoPage {
         let base64Image = 'data:image/jpeg;base64,' +imageData;
 
         this.foto= base64Image;
+        this.servicoProvider.remove("foto");
+        this.servicoProvider.save("foto", this.foto);
       },(err) =>{
         this.toastCtrl.create({
           message : 'Não foi possível tirar a foto',
@@ -146,6 +176,16 @@ export class HistoricoPage {
           position: 'top'
         }).present();
       });
+  }
+
+  buscaFotoLocal() {
+    this.servicoProvider.getFoto().then(foto => {
+      if(foto != null) {
+        this.foto = foto;
+      }else{
+        this.foto = 'assets/imgs/logobrandao.png'; 
+      }
+    });
   }
 
   removeFoto(){

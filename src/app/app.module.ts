@@ -4,18 +4,17 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { TabsPage } from '../pages/tabs/tabs';
-
+import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Pipe, PipeTransform } from '@angular/core';
 import { IonMaskModule } from '@pluritech/ion-mask';
 import { HttpClientModule } from '@angular/common/http'
 import { HistoricoPage } from '../pages/historico/historico';
 import { LoginPage } from '../pages/login/login';
 import { MostraHistoricoPage } from '../pages/mostra-historico/mostra-historico';
 import { DadosPage } from '../pages/login/dados';
-import { BackgroundMode } from '@ionic-native/background-mode';
 import { Camera } from '@ionic-native/camera';
+import { ServicoProvider } from '../providers/servico/servico';
 
 @NgModule({
   declarations:
@@ -25,7 +24,7 @@ import { Camera } from '@ionic-native/camera';
     LoginPage,
     HistoricoPage,
     MostraHistoricoPage,
-    DadosPage,
+    DadosPage
   ],
   imports: [
     BrowserModule,
@@ -34,6 +33,7 @@ import { Camera } from '@ionic-native/camera';
       backButtonText: 'Voltar'
      }),
     IonMaskModule.forRoot(),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,9 +47,9 @@ import { Camera } from '@ionic-native/camera';
   providers: [
     StatusBar,
     SplashScreen,
-    BackgroundMode,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    ServicoProvider
   ]
 })
 export class AppModule {}

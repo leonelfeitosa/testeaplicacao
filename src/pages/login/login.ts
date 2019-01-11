@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage, ToastController, Backdrop } from 'ionic-angular';
 import { MenuController, NavParams, ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { DadosPage } from './dados';
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
 import { HistoricoPage } from '../historico/historico';
 import 'rxjs/add/operator/map';
 import { ConstantesComponent } from '../../components/constantes/constantes';
