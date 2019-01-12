@@ -55,15 +55,15 @@ export class HistoricoPage {
       this.navCtrl.push(LoginPage);
     }
     this.idUsu = localStorage.getItem('idUsuaAppPM');
-    this.buscaAluno().then(aluno => {
-      this.buscaAlunoLocal();
-    });
-    this.buscaTreinos().then(treino => {
-      this.buscaTreinoLocal();
-    });
-    this.buscaEvolucao().then(evolucao => {
-      this.buscaEvolucaoLocal();
-    });
+    
+    this.buscaAlunoLocal();
+    this.buscaTreinoLocal();
+    this.buscaEvolucaoLocal();
+
+    this.buscaAluno();
+    this.buscaTreinos();  
+    this.buscaEvolucao();
+    
     this.buscaFotoLocal();
   }
 
