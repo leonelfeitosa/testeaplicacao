@@ -2,10 +2,10 @@
   <div>
 
 
-    <ion-menu side="left" [content]="mycontent">
+    <ion-menu side="left" [content]="mycontent"> 
       <ion-content>
         <ion-list>
-
+          
           <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
           <h5 class="nome nomepaciente barralateral italico">{{ dadosAluno.nome }}</h5>
           <div *ngIf="!evolucaoExiste">
@@ -14,7 +14,7 @@
             <p class="marge barralateral italico"> Massa Gorda: {{ dadosAluno.massaGorda }} </p>
             <p class="marge barralateral italico"> Cintura: {{ dadosAluno.cintura }}cm </p>
             <p class="marge barralateral italico linha"> IMC: {{ dadosAluno.IMC }} </p>
-            <p class="marge barralateral italico linha"> {{ dadosAluno.msg }} </p>
+            <p class="marge barralateral italico linha mensagem"> {{ dadosAluno.msg }} </p>
           </div>
 
           <div *ngIf="evolucaoExiste">
@@ -23,7 +23,7 @@
             <p class="marge barralateral italico"> Massa Gorda: {{ evolucaoLista[0].massaGorda }} </p>
             <p class="marge barralateral italico"> Cintura: {{ evolucaoLista[0].cintura }}cm </p>
             <p class="marge barralateral italico linha"> IMC: {{ evolucaoLista[0].IMC }} </p>
-            <p class="marge barralateral italico linha"> {{ dadosAluno.msg }} </p>
+            <p class="marge barralateral italico linha mensagem1"> {{ dadosAluno.msg }} </p>
           </div>
           <br>
           <button class="final final3" ion-button block (click)="tirarFoto()">Alterar foto</button>
@@ -57,8 +57,9 @@
     </ion-menu>
 
     <ion-nav #mycontent [root]="rootPage"></ion-nav>
-    <i class="fa fa-arrow-right esquerda"></i>
-    <i class="fa fa-arrow-left direita"></i>
+    <ion-icon class="esquerda" name="menu"></ion-icon>
+    <ion-icon class="direita" name="menu"></ion-icon>
+
     <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
     <h2 class="nome nomepaciente">{{ dadosAluno.nome }}</h2>
 

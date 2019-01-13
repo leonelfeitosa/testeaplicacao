@@ -21,8 +21,8 @@ page-historico {
 
     border-radius: 100%;
    
-    width:100px;     
-    height:100px;
+    width:130px;     
+    height:130px;
     object-fit: cover;
     border: 0;
     margin-left: 100px;
@@ -126,9 +126,15 @@ page-historico {
 
 .esquerda {
     margin: 5px;
+    font-size: 30px;
 }
 
 .direita {
     float: right;
     margin: 5px;
+    font-size: 30px;
+}
+
+.mensagem1{
+    font-size: 20px;
 }
