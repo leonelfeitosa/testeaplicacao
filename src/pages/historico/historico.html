@@ -6,7 +6,7 @@
       <ion-content>
         <ion-list>
           
-          <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
+          <img class="tamanhofoto1" [hidden]="!foto" src="{{foto}}">
           <h5 class="nome nomepaciente barralateral italico">{{ dadosAluno.nome }}</h5>
           <div *ngIf="!evolucaoExiste">
             <p class="marge barralateral italico"> Peso: {{ dadosAluno.peso }}kg </p>
@@ -57,9 +57,14 @@
     </ion-menu>
 
     <ion-nav #mycontent [root]="rootPage"></ion-nav>
-    <ion-icon class="esquerda" name="menu"></ion-icon>
-    <ion-icon class="direita" name="menu"></ion-icon>
 
+    <button ion-button menuToggle="left"><ion-icon class="esquerda" name="menu"></ion-icon>
+    </button>
+
+    <button ion-button menuToggle="right" class="direita1">    <ion-icon class="direita" name="menu"></ion-icon>
+
+    </button>
+    
     <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
     <h2 class="nome nomepaciente">{{ dadosAluno.nome }}</h2>
 

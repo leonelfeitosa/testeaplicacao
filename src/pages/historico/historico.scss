@@ -15,6 +15,8 @@ page-historico {
     color: #fff;
 }
 
+
+
 .tamanhofoto{    
 
 
@@ -29,7 +31,29 @@ page-historico {
     transform: rotate(270deg);
     margin: auto;
     display: block;
-    margin-top: -3px;
+    margin-top: -22px;
+    margin-bottom: 5px;
+    border-width: 3px;
+    border-style: inset;
+    border-color:#fff;
+
+}
+
+.tamanhofoto1{    
+
+
+
+    border-radius: 100%;
+   
+    width:100px;     
+    height:100px;
+    object-fit: cover;
+    border: 0;
+    margin-left: 100px;
+    transform: rotate(270deg);
+    margin: auto;
+    display: block;
+    margin-top: 3px;
     margin-bottom: 5px;
     border-width: 3px;
     border-style: inset;
@@ -125,14 +149,19 @@ page-historico {
 }
 
 .esquerda {
-    margin: 5px;
+   
     font-size: 30px;
 }
 
 .direita {
     float: right;
-    margin: 5px;
+   
     font-size: 30px;
+}
+
+
+.direita1 {
+    float: right; 
 }
 
 .mensagem1{
