@@ -41,6 +41,19 @@ page-mostra-historico {
   margin-top: 40px;  
 }
 
+p {
+  text-align: left !important; 
+  margin-block-start: 0px;
+  margin-block-end: 4px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-size: 15px;
+}
+
+.alinhamento{
+  text-align: left;
+}
+
 .tituloconsulta{
   overflow: hidden;
   text-overflow: ellipsis;

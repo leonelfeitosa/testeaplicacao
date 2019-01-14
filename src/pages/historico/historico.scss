@@ -165,5 +165,28 @@ page-historico {
 }
 
 .mensagem1{
-    font-size: 20px;
+    margin-block-end: 130px;
+    text-align: center !important;
+    position: absolute;
+    bottom: 0;
+    font-size: 18px;
+    margin-right: 15px;
+
+
+}
+
+.suporte{
+    position: relative;    
+    bottom: 0;
+    width:100%;
+    margin-block-end: -5px;
+    margin-left: 5px;  
+}
+
+.suporte1{
+    position: relative;    
+    bottom: 0;
+    width:100%;
+    margin-block-end: 2px;
+    margin-left: 10px;  
 }
