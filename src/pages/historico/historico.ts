@@ -65,6 +65,7 @@ export class HistoricoPage {
     this.buscaEvolucao();
     
     this.buscaFotoLocal();
+    this.buscaTreinos();
   }
 
   buscaAluno() {
