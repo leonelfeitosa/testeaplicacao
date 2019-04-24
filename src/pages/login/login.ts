@@ -7,6 +7,7 @@ import { DadosPage } from './dados';
 import { HistoricoPage } from '../historico/historico';
 import 'rxjs/add/operator/map';
 import { ConstantesComponent } from '../../components/constantes/constantes';
+import { TabsPage } from '../tabs/tabs';
 
 
 @Component({
@@ -63,17 +64,14 @@ export class LoginPage {
         localStorage.setItem('tokenAppPM', this.retornoLogin.token);
         localStorage.setItem('expiresAppPM', this.retornoLogin.expires);
         localStorage.setItem('idUsuaAppPM', this.retornoLogin.user);
-        this.navCtrl.push(HistoricoPage);
+        this.navCtrl.push(TabsPage);
       },(err) =>{
         this.toastCtrl.create({
           message : 'CPF ou Senha Incorretos',
           duration: 2000,
           position: 'top',
           
-        }).present();
-
-       
-        
+        }).present();  
         console.log("CPF ou Senha Incorretos");
         
       });
@@ -82,6 +80,7 @@ export class LoginPage {
       localStorage.removeItem('tokenAppPM');
       localStorage.removeItem('expiresAppPM');
       localStorage.removeItem('idUsuaAppPM');
+      this.navCtrl.push(LoginPage);
     }
     format(valString) {
       if (!valString) {

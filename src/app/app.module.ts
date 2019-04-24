@@ -15,6 +15,8 @@ import { MostraHistoricoPage } from '../pages/mostra-historico/mostra-historico'
 import { DadosPage } from '../pages/login/dados';
 import { Camera } from '@ionic-native/camera';
 import { ServicoProvider } from '../providers/servico/servico';
+import { EvolucaoPage } from '../pages/evolucao/evolucao';
+import { NoticiaPage } from '../pages/noticia/noticia';
 
 @NgModule({
   declarations:
@@ -24,7 +26,9 @@ import { ServicoProvider } from '../providers/servico/servico';
     LoginPage,
     HistoricoPage,
     MostraHistoricoPage,
-    DadosPage
+    DadosPage,
+    EvolucaoPage,
+    NoticiaPage,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,8 @@ import { ServicoProvider } from '../providers/servico/servico';
     LoginPage,
     MostraHistoricoPage,
     DadosPage,
+    EvolucaoPage,
+    NoticiaPage,
   ],
   providers: [
     StatusBar,
