@@ -17,6 +17,7 @@ import { Camera } from '@ionic-native/camera';
 import { ServicoProvider } from '../providers/servico/servico';
 import { EvolucaoPage } from '../pages/evolucao/evolucao';
 import { NoticiaPage } from '../pages/noticia/noticia';
+import { ApinoticiaProvider } from '../providers/apinoticia/apinoticia';
 
 @NgModule({
   declarations:
@@ -55,7 +56,8 @@ import { NoticiaPage } from '../pages/noticia/noticia';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
-    ServicoProvider
+    ServicoProvider,
+    ApinoticiaProvider
   ]
 })
 export class AppModule {}

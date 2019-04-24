@@ -6,6 +6,8 @@ import { EvolucaoComponent } from '../../components/evolucao/evolucao';
 import { TreinoComponent } from '../../components/treino/treino';
 
 @Injectable()
+ 
+
 export class ServicoProvider {
   evolucao: any = [];
   constructor(public http: HttpClient, private storage: Storage) {
@@ -85,19 +87,5 @@ export class ServicoProvider {
       });
   }
 
-  getNews(){
-    var url = 'https://newsapi.org/v2/everything?' +
-    'q=Apple&' +
-    'from=2019-04-24&' +
-    'sortBy=popularity&' +
-    'apiKey=b85a28475c814377bb8a8d4e1959eb5d';
-
-      var req = new Request(url);
-
-      fetch(req)
-      .then(function(response) {
-        console.log(response.json());
-      })
-  }
 
 }
