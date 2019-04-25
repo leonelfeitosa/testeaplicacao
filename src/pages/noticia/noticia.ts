@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApinoticiaProvider } from '../../providers/apinoticia/apinoticia';
+import { mobiscroll } from '@mobiscroll/angular-lite';
+
+mobiscroll.settings = {
+    lang: 'pt-BR',
+    theme: 'ios'
+};
 
 /**
  * Generated class for the NoticiaPage page.
@@ -21,7 +27,7 @@ import { ApinoticiaProvider } from '../../providers/apinoticia/apinoticia';
 
 export class NoticiaPage {
 
-  data: any;
+  data: any = { articles: [] };
 
   public objeto_noticia={
     titulo:"leonel",
@@ -42,14 +48,7 @@ export class NoticiaPage {
   ionViewDidLoad() {
     this.apinoticiaProvider.getLatestNoticia().subscribe(
      data=>{
-
-      
-     // const response = (data as any);
-     // const objeto_retorno =  response._body;
-     // this.lista_noticia = objeto_retorno.totalResults;
-
-       console.log(data);
-       this.data = data;
+      this.data = data;
      }, error => {
        console.log(error);
      }
