@@ -2,58 +2,80 @@
   <div>
 
 
-    <ion-menu side="left" [content]="mycontent"> 
-      <ion-content>
-        <ion-list>
-          
-          <img class="tamanhofoto1" [hidden]="!foto" src="{{foto}}">
-          <h5 class="nome nomepaciente barralateral italico">{{ dadosAluno.nome }}</h5>
-          <div *ngIf="!evolucaoExiste">
-            <p class="marge barralateral italico"> Peso: {{ dadosAluno.peso }}kg </p>
-            <p class="marge barralateral italico"> Massa Magra: {{ dadosAluno.massaMagra }} </p>
-            <p class="marge barralateral italico"> Massa Gorda: {{ dadosAluno.massaGorda }} </p>
-            <p class="marge barralateral italico"> Cintura: {{ dadosAluno.cintura }}cm </p>
-            <p class="marge barralateral italico linha"> IMC: {{ dadosAluno.IMC }} </p>
-            <p class="marge barralateral italico linha mensagem"> {{ dadosAluno.msg }} </p>
-          </div>
-
-          <div *ngIf="evolucaoExiste">
-            <p class="marge barralateral italico"> Peso: {{ evolucaoLista[0].peso }}kg </p>
-            <p class="marge barralateral italico"> Massa Magra: {{ evolucaoLista[0].massaMagra }} </p>
-            <p class="marge barralateral italico"> Massa Gorda: {{ evolucaoLista[0].massaGorda }} </p>
-            <p class="marge barralateral italico"> Cintura: {{ evolucaoLista[0].cintura }}cm </p>
-            <p class="marge barralateral italico linha"> IMC: {{ evolucaoLista[0].IMC }} </p>
-            <p class="marge barralateral italico linha mensagem1"> {{ dadosAluno.msg }} </p>
-          </div>
-          <br>
-          <button class="final final3" ion-button block (click)="tirarFoto()">Alterar foto</button>
-          <button class="final final2" ion-button block (click)="removeFoto()">Remover foto</button>
-          <button class="final" ion-button block (click)="sair()">Sair </button>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-
-
-
 
     <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
-    <button ion-button menuToggle="left"><ion-icon class="esquerda" name="menu"></ion-icon>
-    </button>
-        
-    <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
-    <h2 class="nome nomepaciente">{{ dadosAluno.nome }}</h2>
+  
 
-    <p class="margem cordehistoricotexto" [innerHTML]="listaTreinos.treino.descricao">
-    </p>
 
-    <ion-list>
-      <button class="borda" ion-item *ngFor="let item of listaTreinos.treinos" (click)="buscaTreino(item._id, item, item.nome)">
-        <p class="titulomenu italico">{{ item.nome }}</p>
-      </button>
-    </ion-list>
+
+    <div class="wrapper">
+
+  
+      <div class="profile-card js-profile-card">
+        <div class="profile-card__img">
+          <img src="{{foto}}" alt="profile card">
+        </div>
+    
+        <div class="profile-card__cnt js-profile-cnt">
+          <div class="profile-card__name titulo">{{ dadosAluno.nome }}</div>
+          <div class="profile-card__txt descricao" [innerHTML]="listaTreinos.treino.descricao"></div>
+          <div class="profile-card-loc">
+            <span class="profile-card-loc__icon">
+              <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+            </span>
+  
+          </div>
+    
+    
+         
+    
+          <div class="profile-card-ctr">
+            <button class="profile-card__button button--blue js-message-btn " class="" ion-item *ngFor="let item of listaTreinos.treinos" (click)="buscaTreino(item._id, item, item.nome)">{{ item.nome }}</button>
+          </div>
+        </div>
+    
+        <div class="profile-card-message js-message">
+          <form class="profile-card-form">
+            <div class="profile-card-form__container">
+              <textarea placeholder="Say something..."></textarea>
+            </div>
+    
+            <div class="profile-card-form__bottom">
+              <button class="profile-card__button button--blue js-message-close">
+                Send
+              </button>
+    
+              <button class="profile-card__button button--gray js-message-close">
+                Cancel
+              </button>
+            </div>
+          </form>
+    
+          <div class="profile-card__overlay js-message-close"></div>
+        </div>
+    
+      </div>
+    
+    </div>
+    
+   
+
+
+    
+
+
+
+
 
     
 
   </div>
+
+
+  <button class="final final3" ion-button block (click)="tirarFoto()">Alterar foto</button>
+  <button class="final final2" ion-button block (click)="removeFoto()">Remover foto</button>
+  <button class="final" ion-button block (click)="sair()">Sair </button>
+
+
 </ion-content>

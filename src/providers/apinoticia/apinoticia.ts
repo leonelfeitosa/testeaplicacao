@@ -10,8 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ApinoticiaProvider {
   baseApiPath = 'https://newsapi.org/v2/everything?' +
-  'q=governo&' +
-  'from=2019-04-24&' +
+  'q="crossfit"&' +
   'sortBy=popularity&' +
   'apiKey=b85a28475c814377bb8a8d4e1959eb5d';
 

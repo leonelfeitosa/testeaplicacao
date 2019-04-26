@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ApinoticiaProvider } from '../../providers/apinoticia/apinoticia';
-import { mobiscroll } from '@mobiscroll/angular-lite';
 
-mobiscroll.settings = {
-    lang: 'pt-BR',
-    theme: 'ios'
-};
 
 /**
  * Generated class for the NoticiaPage page.
