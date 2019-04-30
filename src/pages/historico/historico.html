@@ -14,17 +14,13 @@
   
       <div class="profile-card js-profile-card">
         <div class="profile-card__img">
-          <img src="{{foto}}" alt="profile card">
+          <img (click)="presentAlert()" src="{{foto}}" alt="profile card">
         </div>
     
         <div class="profile-card__cnt js-profile-cnt">
           <div class="profile-card__name titulo">{{ dadosAluno.nome }}</div>
-          <div class="profile-card__txt descricao" [innerHTML]="listaTreinos.treino.descricao"></div>
-          <div class="profile-card-loc">
-            <span class="profile-card-loc__icon">
-              <svg class="icon"><use xlink:href="#icon-location"></use></svg>
-            </span>
-  
+          <div class="profile-card__txt descricao" [innerHTML]="listaTreinos.treino.descricao">
+            
           </div>
     
     
@@ -35,26 +31,7 @@
           </div>
         </div>
     
-        <div class="profile-card-message js-message">
-          <form class="profile-card-form">
-            <div class="profile-card-form__container">
-              <textarea placeholder="Say something..."></textarea>
-            </div>
-    
-            <div class="profile-card-form__bottom">
-              <button class="profile-card__button button--blue js-message-close">
-                Send
-              </button>
-    
-              <button class="profile-card__button button--gray js-message-close">
-                Cancel
-              </button>
-            </div>
-          </form>
-    
-          <div class="profile-card__overlay js-message-close"></div>
-        </div>
-    
+        
       </div>
     
     </div>
@@ -63,7 +40,7 @@
 
 
     
-
+  
 
 
 
@@ -72,9 +49,6 @@
 
   </div>
 
-
-  <button class="final final3" ion-button block (click)="tirarFoto()">Alterar foto</button>
-  <button class="final final2" ion-button block (click)="removeFoto()">Remover foto</button>
   <button class="final" ion-button block (click)="sair()">Sair </button>
 
 

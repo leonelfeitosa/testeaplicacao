@@ -587,14 +587,18 @@ a, a:hover {
 
 
 
-
-
-
-
 }
 
 p,h1,h2,ion-label{
   
   font-family: Quicksand;
   color: #1a0c20;
+
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
 }
+
+
