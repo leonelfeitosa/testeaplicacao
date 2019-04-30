@@ -46,7 +46,12 @@ export class HistoricoPage {
 
   foto: any = 'assets/imgs/logobrandao.png';
 
-  constructor(public navCtrl: NavController, public http: HttpClient, private alertCtrl: AlertController, private camera: Camera, private toastCtrl: ToastController, private servicoProvider: ServicoProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public http: HttpClient, 
+    private alertCtrl: AlertController, 
+    private camera: Camera, 
+    private toastCtrl: ToastController, private servicoProvider: ServicoProvider) {
     this.apiUrl = this.Constantes.url;
     this.headers = new HttpHeaders();
     this.token = localStorage.getItem("tokenAppPM");
@@ -211,7 +216,7 @@ export class HistoricoPage {
 
 
     let confirm = this.alertCtrl.create({
-      title: 'Deseja modificar sua foto?',
+      title: 'Alterar foto do perfil',
       //message: 'Essa alteração é permanente!',
       buttons: [
         {
@@ -226,7 +231,7 @@ export class HistoricoPage {
           //    message: 'Essa alteração é permanente!',
               buttons: [
                 {
-                  text: 'Foto',
+                  text: 'Tirar Foto',
                   handler: () => {
 
     
@@ -258,8 +263,30 @@ export class HistoricoPage {
                 {
                   text: 'Galeria',
                   handler: () => {
-                     this.foto = 'assets/imgs/logobrandao.png';
-                    
+
+                    const options: CameraOptions={
+                      quality: 100,
+                      destinationType: this.camera.DestinationType.DATA_URL,
+                      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+                      mediaType: this.camera.MediaType.PICTURE,
+                      saveToPhotoAlbum: false
+                    }
+                    this.camera.getPicture(options).then((ImageData)=>{
+                      let base64Image = 'data:image/jpeg;base64,' + ImageData;
+                      this.foto = base64Image;
+                      this.servicoProvider.remove("foto");
+                      this.servicoProvider.save("foto", this.foto);
+                      
+                    },(err)=>{
+                      this.toastCtrl.create({
+                        message: 'Não foi possível tirar a foto',
+                        duration: 2000,
+                        position: 'top'
+                      }).present();
+                    });
+
+
+
                   }
                 },
                 {
@@ -277,7 +304,7 @@ export class HistoricoPage {
           }
         },
         {
-          text: 'Cancelar',
+          text: 'Não',
           handler: () => {
 
         }
