@@ -47,10 +47,10 @@ export class HistoricoPage {
   foto: any = 'assets/imgs/logobrandao.png';
 
   constructor(
-    public navCtrl: NavController, 
-    public http: HttpClient, 
-    private alertCtrl: AlertController, 
-    private camera: Camera, 
+    public navCtrl: NavController,
+    public http: HttpClient,
+    private alertCtrl: AlertController,
+    private camera: Camera,
     private toastCtrl: ToastController, private servicoProvider: ServicoProvider) {
     this.apiUrl = this.Constantes.url;
     this.headers = new HttpHeaders();
@@ -151,9 +151,34 @@ export class HistoricoPage {
   }
 
   sair() {
-    this.navCtrl.push(LoginPage, {
-      sair: '1'
+
+
+    let alert = this.alertCtrl.create({
+      title: 'Deseja sair do app?',
+      buttons: [
+        {
+          text: 'Sim',
+          role: 'sim',
+          handler: () => {
+
+            this.navCtrl.parent.parent.push(LoginPage, {sair:'1'});
+              
+          }
+        },
+        {
+          text: 'Não',
+          handler: () => {
+          }
+        }
+      ]
     });
+    alert.present();
+
+
+
+
+
+ 
   }
 
   notificacaoAlert() {
@@ -165,29 +190,6 @@ export class HistoricoPage {
     alert.present();
   }
 
-  tirarFoto() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    };
-
-    this.camera.getPicture(options).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-
-      this.foto = base64Image;
-      this.servicoProvider.remove("foto");
-      this.servicoProvider.save("foto", this.foto);
-    }, (err) => {
-      this.toastCtrl.create({
-        message: 'Não foi possível tirar a foto',
-        duration: 2000,
-        position: 'top'
-      }).present();
-    });
-  }
-
   buscaFotoLocal() {
     this.servicoProvider.getFoto().then(foto => {
       if (foto != null) {
@@ -196,10 +198,6 @@ export class HistoricoPage {
         this.foto = 'assets/imgs/logobrandao.png';
       }
     });
-  }
-
-  removeFoto() {
-    this.foto = 'assets/imgs/logobrandao.png';
   }
 
   receive() {
@@ -214,7 +212,6 @@ export class HistoricoPage {
 
   presentAlert() {
 
-
     let confirm = this.alertCtrl.create({
       title: 'Alterar foto do perfil',
       //message: 'Essa alteração é permanente!',
@@ -222,41 +219,48 @@ export class HistoricoPage {
         {
           text: 'Sim',
           handler: () => {
-
-
-
-
+            //inicio2
             let confirma = this.alertCtrl.create({
               title: 'Essa alteração é permanente!',
-          //    message: 'Essa alteração é permanente!',
+              //    message: 'Essa alteração é permanente!',
               buttons: [
                 {
                   text: 'Tirar Foto',
                   handler: () => {
+                    let alert = this.alertCtrl.create({
+                      title: 'A foto deve ser tirada na horizontal',
+                      buttons: [
+                        {
+                          text: 'ok',
+                          role: 'cancel',
+                          handler: () => {
+                            const options: CameraOptions = {
+                              quality: 100,
+                              destinationType: this.camera.DestinationType.DATA_URL,
+                              encodingType: this.camera.EncodingType.JPEG,
+                              mediaType: this.camera.MediaType.PICTURE
+                            };
 
-    
-                    const options: CameraOptions = {
-                      quality: 100,
-                      destinationType: this.camera.DestinationType.DATA_URL,
-                      encodingType: this.camera.EncodingType.JPEG,
-                      mediaType: this.camera.MediaType.PICTURE
-                    };
-        
-                    this.camera.getPicture(options).then((imageData) => {
-                      let base64Image = 'data:image/jpeg;base64,' + imageData;
-        
-                      this.foto = base64Image;
-                      this.servicoProvider.remove("foto");
-                      this.servicoProvider.save("foto", this.foto);
-                    }, (err) => {
-                      this.toastCtrl.create({
-                        message: 'Não foi possível tirar a foto',
-                        duration: 2000,
-                        position: 'top'
-                      }).present();
+                            this.camera.getPicture(options).then((imageData) => {
+                              let base64Image = 'data:image/jpeg;base64,' + imageData;
+
+                              this.foto = base64Image;
+                              this.servicoProvider.remove("foto");
+                              this.servicoProvider.save("foto", this.foto);
+
+                            }, (err) => {
+                              this.toastCtrl.create({
+                                message: 'Não foi possível tirar a foto',
+                                duration: 2000,
+                                position: 'top'
+                              }).present();
+                            });
+                          }
+                        },
+
+                      ]
                     });
-        
-
+                    alert.present();
 
                   }
                 },
@@ -264,20 +268,20 @@ export class HistoricoPage {
                   text: 'Galeria',
                   handler: () => {
 
-                    const options: CameraOptions={
+                    const options: CameraOptions = {
                       quality: 100,
                       destinationType: this.camera.DestinationType.DATA_URL,
                       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
                       mediaType: this.camera.MediaType.PICTURE,
                       saveToPhotoAlbum: false
                     }
-                    this.camera.getPicture(options).then((ImageData)=>{
+                    this.camera.getPicture(options).then((ImageData) => {
                       let base64Image = 'data:image/jpeg;base64,' + ImageData;
                       this.foto = base64Image;
                       this.servicoProvider.remove("foto");
                       this.servicoProvider.save("foto", this.foto);
-                      
-                    },(err)=>{
+
+                    }, (err) => {
                       this.toastCtrl.create({
                         message: 'Não foi possível tirar a foto',
                         duration: 2000,
@@ -292,10 +296,11 @@ export class HistoricoPage {
                 {
                   text: 'Remover',
                   handler: () => {
-                     this.foto = 'assets/imgs/logobrandao.png';
-                    
+                    this.foto = 'assets/imgs/logobrandao.png';
+
                   }
                 },
+                //final 
 
               ]
             });
@@ -307,16 +312,16 @@ export class HistoricoPage {
           text: 'Não',
           handler: () => {
 
-        }
-    },
-    
-	]
-  });
+          }
+        },
 
-  confirm.present();
-}
+      ]
+    });
+
+    confirm.present();
+  }
 
 
 
-  
+
 }

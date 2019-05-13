@@ -46,7 +46,7 @@ export class LoginPage {
       }
       this.expires = localStorage.getItem("expiresAppPM");
       if(new Date(this.expires) > new Date() && this.expires != '') {
-        this.navCtrl.push(HistoricoPage);
+        this.navCtrl.push(TabsPage);
       }
     }
 

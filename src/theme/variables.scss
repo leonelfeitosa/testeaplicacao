@@ -35,7 +35,7 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #0b0b0b,
-  secondary:  #68d6b1,
+  secondary:  #d3d619,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222
@@ -47,7 +47,15 @@ $colors: (
 // iOS only Sass variables can go here
 
 
+.alert-md .alert-wrapper {
+  border-radius: 10px !important; 
+  max-width: 280px;
+  background-color: #fafafa;
+  -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  //opacity:.8 !important; 
 
+}
 
 // App Material Design Variables
 // --------------------------------------------------
@@ -86,3 +94,10 @@ $colors: (
 
 //@import "roboto";
 @import "noto-sans";
+
+ion-content-md {
+    
+  width: 100%;
+  background-image: url("../../assets/img/fundo.png");
+  background-repeat: no-repeat;
+}

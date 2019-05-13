@@ -7,42 +7,41 @@
 
 
   <ion-content>
-    <ion-list>
+  
 
 
-      <h1 class="nome nomepaciente barralateral italico">Evolução</h1>
-      <hr>
-      <div *ngIf="evolucaoExiste">
-        <div *ngFor="let item of evolucaoLista">
-          <p class="marge barralateral italico"> Data: {{ item.dataAvaliacao }} </p>
-          <p class="marge barralateral italico"> Peso: {{ item.peso }}kg </p>
-          <p class="marge barralateral italico"> Massa Magra: {{ item.massaMagra }} </p>
-          <p class="marge barralateral italico"> Massa Gorda: {{ item.massaGorda }} </p>
-          <p class="marge barralateral italico"> Cintura: {{ item.cintura }}cm </p>
-          <p class="marge barralateral italico"> IMC: {{ item.IMC }} </p>
-          <hr>
+
+      <div class="wrapper">
+          <div class="profile-card js-profile-card">
+              <div class="profile-card__cnt js-profile-cnt ">
+              <div class="profile-card__name bordabaixo psize">EVOLUÇÃO</div>
+              <canvas #lineCanvas></canvas>
+              <div class="esquerda">
+                
+                  <ion-list>
+                      <hr>
+                      <div *ngIf="evolucaoExiste">
+                        <div *ngFor="let item of evolucaoLista">
+                          <p class="marge barralateral italico"> Data: {{ item.dataAvaliacao }} </p>
+                          <p class="marge barralateral italico"> Peso: {{ item.peso }}kg </p>
+                          <p class="marge barralateral italico"> Massa Magra: {{ item.massaMagra }} </p>
+                          <p class="marge barralateral italico"> Massa Gorda: {{ item.massaGorda }} </p>
+                          <p class="marge barralateral italico"> Cintura: {{ item.cintura }}cm </p>
+                          <p class="marge barralateral italico"> IMC: {{ item.IMC }} </p>
+                          <hr>
+                        </div>
+                      </div>
+                    </ion-list>
+
+              </div>
+            </div>
+          </div>    
         </div>
-      </div>
-    </ion-list>
-    <div class="suporte">
-    <a target="_blank" class="suporte" title="Enviar mensagem por Whatsapp" href="https://api.whatsapp.com/send?phone=5589999084347" target="_blank">Suporte Online</a>            
-  </div>
-  <div class="suporte1">
-    <a href="http://lisatecnologias.com/" target="_blank" class="corbranco"> <small>Copyright &copy; Lisa Tecnologias 2019</small></a>
-  </div>
-
 
 
 
 
    
-   
-      <canvas #lineCanvas></canvas>
- 
+  
 
-
-
- 
-
- 
 </ion-content>

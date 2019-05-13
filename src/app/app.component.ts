@@ -13,7 +13,7 @@ import { MostraHistoricoPage } from '../pages/mostra-historico/mostra-historico'
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any = LoginPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     public alertCtrl: AlertController) {

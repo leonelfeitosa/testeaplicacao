@@ -1,7 +1,7 @@
 page-noticia {
 
 
-  @import url(https://fonts.googleapis.com/css?family=Lora|Roboto:400,500);
+  //@import url(https://fonts.googleapis.com/css?family=Lora|Roboto:400,500);
 
 body {
   margin: 0;
@@ -12,7 +12,7 @@ body {
   -webkit-font-variant-ligatures: none;
           font-variant-ligatures: none;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+ // font-family: "Roboto", sans-serif;
   background-color: #fafafa;
 }
 body::before,
@@ -45,7 +45,7 @@ body,
   text-transform: uppercase;
 }
 .ff-serif {
-  font-family: "Lora", serif;
+ // font-family: "Lora", serif;
 }
 
 .font-weight-normal {
@@ -103,13 +103,13 @@ body,
 .styled-link {
   text-decoration: none;
   outline: none;
-  color:#3b7e5a;
+  color:#68158b;
   transition: all 0.25s ease-in;
 }
 .styled-link:hover,
 .styled-link:focus,
 .styled-link:active {
-  color: #3b7e5a;
+  color: #68158b;
 }
 .shadow-1 {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
