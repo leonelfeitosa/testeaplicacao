@@ -65,6 +65,9 @@ export class EvolucaoPage {
 
   dataPeso: any = [];
   dataMassaMagra: any = [];
+  dataMassaGorda: any = [];
+  dataCintura: any = [];
+  dataIMC: any = [];
   labelsLista: any = [];
 
   headers: HttpHeaders;
@@ -153,6 +156,42 @@ export class EvolucaoPage {
         pointHitRadius: 10,
         data: this.dataMassaMagra,
         scanGaps: false,
+      } , {
+        label: 'Massa Gorda',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(0,128,128)',
+        borderColor: 'rgb(0,128,128)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.dataMassaGorda,
+        scanGaps: false,
+      } , {
+        label: 'Cintura',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(255,99,71)',
+        borderColor: 'rgb(255,99,71)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.dataCintura,
+        scanGaps: false,
+      } , {
+        label: 'IMC',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(30,144,255)',
+        borderColor: 'rgb(30,144,255)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.dataIMC,
+        scanGaps: false,
       }
 ], 
     }  
@@ -222,10 +261,14 @@ export class EvolucaoPage {
   buscaEvolucaoLocal() {
     this.servicoProvider.getEvolucao().then(evolucao => {
       this.evolucaoLista = evolucao;
+      console.log(this.evolucaoLista);
       if (this.evolucaoLista.length > 0) {
         this.evolucaoExiste = true;
         this.graficoDataPeso(this.evolucaoLista);
         this.graficoDataMassaMagra(this.evolucaoLista);
+        this.graficoDataMassaGorda(this.evolucaoLista);
+        this.graficoDataCintura(this.evolucaoLista);
+        this.graficoDataIMC(this.evolucaoLista);
       }
     });
   }
@@ -241,7 +284,25 @@ export class EvolucaoPage {
     lista.forEach(dados => {
       this.dataMassaMagra.push(parseInt(dados.massaMagra));
     });
-  } 
+  }
+  
+  graficoDataMassaGorda(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataMassaGorda.push(parseInt(dados.massaGorda));
+    });
+  }
+
+  graficoDataCintura(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataCintura.push(dados.cintura);
+    });
+  }
+
+  graficoDataIMC(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataIMC.push(dados.IMC);
+    });
+  }
 
   buscaTreino(id, treino, nomeTreino) {
     this.navCtrl.push(MostraHistoricoPage, {
