@@ -157,7 +157,7 @@ export class EvolucaoPage {
         data: this.dataMassaMagra,
         scanGaps: false,
       } , {
-        label: 'Massa Gorda',
+        label: 'Gordura',
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgb(0,128,128)',
