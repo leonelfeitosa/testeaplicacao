@@ -63,6 +63,10 @@ export class EvolucaoPage {
 
   public evolucaoLista: any = [];
 
+  dataPeso: any = [];
+  dataMassaMagra: any = [];
+  labelsLista: any = [];
+
   headers: HttpHeaders;
 
   foto: any = 'assets/imgs/logobrandao.png';
@@ -124,30 +128,30 @@ export class EvolucaoPage {
 
 
     const data = {
-      labels: ['{{Janeiro}}', 'Fevereiro', 'Março', 'Abril'],
+      labels: this.labelsLista,
       datasets: [{
         label: 'peso ',
         fill: false,
         lineTension: 0.1,
-        backgroundColor: 'rgb(0, 178, 255)',
+        backgroundColor: 'rgb(231, 205, 35)',
         borderColor: 'rgb(231, 205, 35)',
         borderCapStyle: 'butt',
         borderJoinStyle: 'miter',
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [20, 15, 98, 4],
+        data: this.dataPeso,
         scanGaps: false,
       }, {
         label: 'Massa magra',
         fill: false,
         lineTension: 0.1,
-        backgroundColor: 'rgb(117, 0, 49)',
+        backgroundColor: 'rgb(51, 50, 46)',
         borderColor: 'rgb(51, 50, 46)',
         borderCapStyle: 'butt',
         borderJoinStyle: 'miter',
         pointRadius: 1,
         pointHitRadius: 10,
-        data: [100, 30, 12, 67],
+        data: this.dataMassaMagra,
         scanGaps: false,
       }
 ], 
@@ -220,9 +224,24 @@ export class EvolucaoPage {
       this.evolucaoLista = evolucao;
       if (this.evolucaoLista.length > 0) {
         this.evolucaoExiste = true;
+        this.graficoDataPeso(this.evolucaoLista);
+        this.graficoDataMassaMagra(this.evolucaoLista);
       }
     });
   }
+
+  graficoDataPeso(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataPeso.push(dados.peso);
+      this.labelsLista.push(index);
+    });
+  } 
+
+  graficoDataMassaMagra(lista:any) {
+    lista.forEach(dados => {
+      this.dataMassaMagra.push(parseInt(dados.massaMagra));
+    });
+  } 
 
   buscaTreino(id, treino, nomeTreino) {
     this.navCtrl.push(MostraHistoricoPage, {

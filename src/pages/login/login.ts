@@ -72,7 +72,7 @@ export class LoginPage {
           position: 'top',
           
         }).present();  
-        console.log("CPF ou Senha Incorretos");
+        console.log(err.error);
         
       });
     } 
