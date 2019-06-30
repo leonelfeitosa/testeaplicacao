@@ -133,7 +133,7 @@ export class EvolucaoPage {
     const data = {
       labels: this.labelsLista,
       datasets: [{
-        label: 'peso ',
+        label: 'Peso',
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgb(231, 205, 35)',
@@ -145,7 +145,7 @@ export class EvolucaoPage {
         data: this.dataPeso,
         scanGaps: false,
       }, {
-        label: 'Massa magra',
+        label: 'Massa Magra',
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgb(51, 50, 46)',

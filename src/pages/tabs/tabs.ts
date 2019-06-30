@@ -12,9 +12,9 @@ export class TabsPage {
 
   tab1Root = HistoricoPage;
   tab2Root = EvolucaoPage;
-  tab3Root = NoticiaPage;
 
 
   constructor() {
+    
   }
 }
