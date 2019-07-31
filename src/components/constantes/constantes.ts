@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: 'constantes.html'
 })
 export class ConstantesComponent {
-  //url: string = 'http://localhost:3000/api/v1/';
-  url: string = 'http://162.243.161.30:3016/api/v1/';
+  url: string = 'http://192.168.0.109:3000/api/v1/';
+  //url: string = 'http://162.243.161.30:3016/api/v1/';
 
   constructor() {
   }

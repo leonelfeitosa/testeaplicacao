@@ -38,7 +38,7 @@ export class HistoricoPage {
 
   public data: Date;
 
-  public listaTreinos: any = { treino: {}, treinos: [] };
+  public listaTreinos: any = { treino: {}, treinos: [], itemExercicio: [] };
 
   public evolucaoLista: any = [];
 
@@ -71,7 +71,6 @@ export class HistoricoPage {
     this.buscaEvolucao();
 
     this.buscaFotoLocal();
-    this.buscaTreinos();
   }
 
   buscaAluno() {
@@ -94,6 +93,7 @@ export class HistoricoPage {
   }
 
   buscaTreinos() {
+    this.existe = false;
     return new Promise(resolve => {
       this.http.get(this.apiUrl + 'treinos/' + this.idUsu, { headers: this.headers }).subscribe(res => {
         this.listaTreinos = res;
@@ -113,6 +113,7 @@ export class HistoricoPage {
   buscaTreinoLocal() {
     this.servicoProvider.getTreino().then(treino => {
       this.listaTreinos = treino;
+      this.buscaTreinos();
     });
   }
 
