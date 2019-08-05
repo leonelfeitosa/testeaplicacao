@@ -61,7 +61,7 @@ p {
 a{
   color: #383737;
   text-decoration:none;
-  font-size: 18px; 
+  font-size: 14px; 
 }
 
 
@@ -560,7 +560,15 @@ h1,h2,ion-label{
 
 
 page-mostra-historico p {
-  font-size: 14px;
+  font-size: 16px;
   text-align: justify;
   color: #1a0c20;
+  margin-block-end: -5px;
+}
+
+.exercicio{
+  margin-block-end: 0px;
+  margin-top: 2px;
+  text-align: left;
+  font-size: 9;
 }
