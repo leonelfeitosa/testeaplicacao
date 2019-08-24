@@ -64,10 +64,14 @@ export class EvolucaoPage {
   public evolucaoLista: any = [];
 
   dataPeso: any = [];
-  dataMassaMagra: any = [];
-  dataMassaGorda: any = [];
+  dataTorax: any = [];
+  dataAbdomen: any = [];
   dataCintura: any = [];
-  dataIMC: any = [];
+  dataQuadril: any = [];
+  dataCoxa: any = [];
+  dataPerna: any = [];
+  dataBraco: any = [];
+  dataAnteBraco: any = [];
   labelsLista: any = [];
 
   headers: HttpHeaders;
@@ -83,9 +87,6 @@ export class EvolucaoPage {
     if (new Date(this.expires) < new Date()) {
       this.navCtrl.push(LoginPage);
     }
-
-
-
 
     this.idUsu = localStorage.getItem('idUsuaAppPM');
 
@@ -104,16 +105,9 @@ export class EvolucaoPage {
   ngAfterViewInit() {
     setTimeout(() => {
       this.lineChart = this.getLineChart();
-    }, 150)
+    }, 400)
 
   }
-
-
-
-
-
-
-
 
 
   getChart(context, chartType, data, options?) {
@@ -145,19 +139,7 @@ export class EvolucaoPage {
         data: this.dataPeso,
         scanGaps: false,
       }, {
-        label: 'Massa Magra',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgb(51, 50, 46)',
-        borderColor: 'rgb(51, 50, 46)',
-        borderCapStyle: 'butt',
-        borderJoinStyle: 'miter',
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: this.dataMassaMagra,
-        scanGaps: false,
-      } , {
-        label: 'Gordura',
+        label: 'Abdômen',
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgb(0,128,128)',
@@ -166,7 +148,7 @@ export class EvolucaoPage {
         borderJoinStyle: 'miter',
         pointRadius: 1,
         pointHitRadius: 10,
-        data: this.dataMassaGorda,
+        data: this.dataAbdomen,
         scanGaps: false,
       } , {
         label: 'Cintura',
@@ -181,7 +163,7 @@ export class EvolucaoPage {
         data: this.dataCintura,
         scanGaps: false,
       } , {
-        label: 'IMC',
+        label: 'Quadril',
         fill: false,
         lineTension: 0.1,
         backgroundColor: 'rgb(30,144,255)',
@@ -190,9 +172,57 @@ export class EvolucaoPage {
         borderJoinStyle: 'miter',
         pointRadius: 1,
         pointHitRadius: 10,
-        data: this.dataIMC,
+        data: this.dataQuadril,
         scanGaps: false,
-      }
+      }, {
+        label: 'Coxa D e E',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(0,255,255)',
+        borderColor: 'rgb(0,255,255)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.dataCoxa,
+        scanGaps: false,
+      } , {
+        label: 'Perna D e E',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(128,128,0)',
+        borderColor: 'rgb(128,128,0)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.dataPerna,
+        scanGaps: false,
+      } , {
+        label: 'Braço D e E',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(188,143,143)',
+        borderColor: 'rgb(188,143,143)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.dataBraco,
+        scanGaps: false,
+      } , {
+        label: 'AnteBraço',
+        fill: false,
+        lineTension: 0.1,
+        backgroundColor: 'rgb(165,42,42)',
+        borderColor: 'rgb(165,42,42)',
+        borderCapStyle: 'butt',
+        borderJoinStyle: 'miter',
+        pointRadius: 1,
+        pointHitRadius: 10,
+        data: this.dataAnteBraco,
+        scanGaps: false,
+      } 
 ], 
     }  
 
@@ -264,43 +294,72 @@ export class EvolucaoPage {
       console.log(this.evolucaoLista);
       if (this.evolucaoLista.length > 0) {
         this.evolucaoExiste = true;
+        
         this.graficoDataPeso(this.evolucaoLista);
-        this.graficoDataMassaMagra(this.evolucaoLista);
-        this.graficoDataMassaGorda(this.evolucaoLista);
+        this.graficoDataTorax(this.evolucaoLista);
+        this.graficoDataAbdomen(this.evolucaoLista);
         this.graficoDataCintura(this.evolucaoLista);
-        this.graficoDataIMC(this.evolucaoLista);
+        this.graficoDataQuadril(this.evolucaoLista);
+        this.graficoDataCoxa(this.evolucaoLista);
+        this.graficoDataPerna(this.evolucaoLista);
+        this.graficoDataBraco(this.evolucaoLista);
+        this.graficoDataAnteBraco(this.evolucaoLista);
       }
     });
   }
 
   graficoDataPeso(lista:any) {
     lista.forEach((dados, index) => {
-      this.dataPeso.push(dados.peso);
+      this.dataPeso.push(parseFloat(dados.peso));
       this.labelsLista.push(index);
     });
   } 
 
-  graficoDataMassaMagra(lista:any) {
+  graficoDataTorax(lista:any) {
     lista.forEach(dados => {
-      this.dataMassaMagra.push(parseInt(dados.massaMagra));
+      this.dataTorax.push(parseFloat(dados.torax));
     });
   }
   
-  graficoDataMassaGorda(lista:any) {
+  graficoDataAbdomen(lista:any) {
     lista.forEach((dados, index) => {
-      this.dataMassaGorda.push(parseInt(dados.massaGorda));
+      this.dataAbdomen.push(parseFloat(dados.abdomem));
     });
   }
 
   graficoDataCintura(lista:any) {
     lista.forEach((dados, index) => {
-      this.dataCintura.push(dados.cintura);
+      this.dataCintura.push(parseFloat(dados.cintura));
     });
   }
 
-  graficoDataIMC(lista:any) {
+  graficoDataQuadril(lista:any) {
     lista.forEach((dados, index) => {
-      this.dataIMC.push(dados.IMC);
+      this.dataQuadril.push(parseFloat(dados.quadril));
+    });
+  }
+
+  graficoDataCoxa(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataCoxa.push(parseFloat(dados.coxaDE));
+    });
+  }
+
+  graficoDataPerna(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataPerna.push(parseFloat(dados.pernaDE));
+    });
+  }
+
+  graficoDataBraco(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataBraco.push(parseFloat(dados.bracoDE));
+    });
+  }
+
+  graficoDataAnteBraco(lista:any) {
+    lista.forEach((dados, index) => {
+      this.dataAnteBraco.push(parseFloat(dados.antebraco));
     });
   }
 
