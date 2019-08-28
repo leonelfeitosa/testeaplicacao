@@ -105,7 +105,7 @@ export class EvolucaoPage {
   ngAfterViewInit() {
     setTimeout(() => {
       this.lineChart = this.getLineChart();
-    }, 400)
+    }, 550)
 
   }
 
@@ -136,9 +136,9 @@ export class EvolucaoPage {
         borderJoinStyle: 'miter',
         pointRadius: 1,
         pointHitRadius: 10,
-        data: this.dataPeso,
+        data: this.dataPeso.reverse(),
         scanGaps: false,
-      }, {
+      },/* {
         label: 'Abdômen',
         fill: false,
         lineTension: 0.1,
@@ -223,6 +223,7 @@ export class EvolucaoPage {
         data: this.dataAnteBraco,
         scanGaps: false,
       } 
+      */
 ], 
     }  
 
@@ -291,19 +292,18 @@ export class EvolucaoPage {
   buscaEvolucaoLocal() {
     this.servicoProvider.getEvolucao().then(evolucao => {
       this.evolucaoLista = evolucao;
-      console.log(this.evolucaoLista);
       if (this.evolucaoLista.length > 0) {
         this.evolucaoExiste = true;
         
         this.graficoDataPeso(this.evolucaoLista);
-        this.graficoDataTorax(this.evolucaoLista);
+        /*this.graficoDataTorax(this.evolucaoLista);
         this.graficoDataAbdomen(this.evolucaoLista);
         this.graficoDataCintura(this.evolucaoLista);
         this.graficoDataQuadril(this.evolucaoLista);
         this.graficoDataCoxa(this.evolucaoLista);
         this.graficoDataPerna(this.evolucaoLista);
         this.graficoDataBraco(this.evolucaoLista);
-        this.graficoDataAnteBraco(this.evolucaoLista);
+        this.graficoDataAnteBraco(this.evolucaoLista);*/
       }
     });
   }

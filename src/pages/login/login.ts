@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage, ToastController, Backdrop } from 'ionic-angular';
 import { MenuController, NavParams, ModalController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DadosPage } from './dados';
 import { HistoricoPage } from '../historico/historico';
 import 'rxjs/add/operator/map';
@@ -30,6 +30,7 @@ export class LoginPage {
   mensagem: string;
   expires: string;
   sair: string;
+  headers: HttpHeaders;
 
   constructor(public modalCtrl: ModalController,
     private alertCtrl: AlertController,
@@ -48,6 +49,9 @@ export class LoginPage {
       if(new Date(this.expires) > new Date() && this.expires != '') {
         this.navCtrl.push(TabsPage);
       }
+      this.headers = new HttpHeaders({
+        "Content-Type": "application/json",
+        });
     }
 
     ionViewDidEnter() {
@@ -58,7 +62,7 @@ export class LoginPage {
     }
 
     logar() {
-      this.http.post(this.apiUrl+'login', {cpf: this.cpf, senha: this.senha, usuario: 'Aluno'})
+      this.http.post(this.apiUrl+'login', {cpf: this.cpf, senha: this.senha, usuario: 'Aluno'}, { headers: this.headers })
       .subscribe((data: DadosPage) => {
         this.retornoLogin = data;
         localStorage.setItem('tokenAppPM', this.retornoLogin.token);
