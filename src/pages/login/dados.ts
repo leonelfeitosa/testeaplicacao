@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
-import { MenuController, NavParams, ModalController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http'
+import { ModalController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',

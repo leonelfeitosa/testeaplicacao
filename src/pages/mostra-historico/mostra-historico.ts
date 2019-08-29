@@ -1,15 +1,8 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component} from '@angular/core';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginPage } from '../login/login';
 import { ServicoProvider } from '../../providers/servico/servico';
-//import * as io from 'socket.io-client';
-/**
- * Generated class for the MostraHistoricoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -33,7 +26,7 @@ export class MostraHistoricoPage{
     historico: ""
   }
 
-  constructor(private servicoProvider: ServicoProvider, public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private alertCtrl: AlertController) {
+  constructor(private servicoProvider: ServicoProvider, public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     this.headers = new HttpHeaders();
     this.token = localStorage.getItem("tokenAppPM");
     this.expires = localStorage.getItem("expiresAppPM");

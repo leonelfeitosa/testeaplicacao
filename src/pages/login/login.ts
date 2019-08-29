@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, ToastController, Backdrop } from 'ionic-angular';
+import { NavController, ToastController} from 'ionic-angular';
 import { MenuController, NavParams, ModalController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DadosPage } from './dados';
-import { HistoricoPage } from '../historico/historico';
 import 'rxjs/add/operator/map';
 import { ConstantesComponent } from '../../components/constantes/constantes';
 import { TabsPage } from '../tabs/tabs';
@@ -33,7 +31,7 @@ export class LoginPage {
   headers: HttpHeaders;
 
   constructor(public modalCtrl: ModalController,
-    private alertCtrl: AlertController,
+  //  private alertCtrl: AlertController,
     private menu: MenuController,
     public navCtrl: NavController,
     private http: HttpClient,

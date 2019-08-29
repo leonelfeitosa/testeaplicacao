@@ -1,32 +1,18 @@
-
 <ion-content #popoverContent class="popover-page">
+  
+  <div class="wrapper">
+    <div class="profile-card js-profile-card">
+      <div class="profile-card__cnt js-profile-cnt ">
+        <div class="profile-card__name">{{nomeTreino}}</div>
+        <div class="profile-card__txt" [innerHTML]="treino.treino">Front-end Developer from <strong>Mesopotamia</strong>
+        </div>
+        <ion-list class="exercicio tamanhoexercicio" *ngFor="let item of listaExercicios">
+          <a class="tamanhoexercicio" href="{{ item.link }}"> {{ item.exercicio }} {{ item.intensidade }}
+          </a>
+        </ion-list>
 
-
-
-
-
-    <div class="wrapper">
-        <div class="profile-card js-profile-card">
-            <div class="profile-card__cnt js-profile-cnt ">
-            <div class="profile-card__name bordabaixo psize">{{nomeTreino}}</div>
-            <div class="profile-card__txt" [innerHTML]="treino.treino">Front-end Developer from <strong>Mesopotamia</strong></div>
-           
-            <ion-list class="exercicio tamanhoexercicio" *ngFor="let item of listaExercicios">
-              
-              <a class="tamanhoexercicio" href="{{ item.link }}"> {{ item.exercicio }} {{ item.intensidade }}
-                </a>
-              
-              
-              
-            </ion-list>
-            
-          </div>
-        </div>    
       </div>
-     
-
-
-
-
+    </div>
+  </div>
 
 </ion-content>
