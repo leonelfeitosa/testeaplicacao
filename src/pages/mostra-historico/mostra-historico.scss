@@ -91,10 +91,31 @@ p {
 
 
 .exercicio{
-  margin-block-end: 0px;
   margin-top: 2px;
   text-align: left;
   font-size: 16px !important;
+  margin-block-end: 20px;
+ // border-style: groove;
+  border-right: 0;
+  border-top: 0;
+  border-left: 0;
+  border-bottom-width: 0.1px;
+  
+}
+
+.intensidade{
+  font-weight: bold;
+}
+
+.marcador{
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+input ::before {
+  content: "" !important;
+  font-size: 20px;
 
 }
 }
